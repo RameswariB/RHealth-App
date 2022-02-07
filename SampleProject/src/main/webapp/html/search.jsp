@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="com.test.dao.Product"%>
+<%@page import="com.test.beans.Product"%>
 <%@page import="java.util.List" buffer="8kb" isELIgnored="false"
 	session="true" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" isThreadSafe="true" isErrorPage="false"

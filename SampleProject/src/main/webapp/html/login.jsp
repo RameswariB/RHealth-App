@@ -41,7 +41,7 @@
 
 	<section>
 	
-	<%=displayDate()%>
+	<%=DisplayDate()%>
 	</section>
 	<section id="login" class="section">
 		<div class="container tagline">
@@ -88,11 +88,11 @@
 	<!-- footer -->
 <%!
 
-public String displayDate(){
-	SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-mm-dd hh:mm");
-	Date toDate = Calendar.getInstance().getTime();
-	return dateFormat.format(toDate);
-}
+	public String DisplayDate(){
+		SimpleDateFormat dateformate = new SimpleDateFormat("YYYY-MM-DD hh:mm");
+		Date date = Calendar.getInstance().getTime();
+		return dateformate.format(date);
+	}
 
 %>
 </body>
