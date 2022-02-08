@@ -17,31 +17,7 @@
 </head>
 <body>
 
-	<header id="home" class="header">
-		<nav class="nav" role="navigation">
-			<div class="container nav-elements">
-				<div class="branding">
-					<a href="home"><img src="images/hpluslogo.svg"
-						alt="Logo - H Plus Sports"></a>
-				</div>
-				<!-- branding -->
-				<ul class="navbar">
-					<li><a href="home">home</a></li>
-					<li><a href="#products">products</a></li>
-					<li><a href="#history">history</a></li>
-					<li><a href="login">login</a></li>
-					<li><a href="#people">people</a></li>
-					<li><a href="#search">search</a></li>
-					<li><a href="register">new user?</a></li>
-					<li><a href="redirect">linkedIn</a></li>
-				</ul>
-				<!-- navbar -->
-
-				<!-- navbar -->
-			</div>
-			<!-- container nav-elements -->
-		</nav>
-	</header>
+	<%@include file="header.jsp" %>
 
 	<section id="products" class="section">
 		<div class="container">
@@ -52,11 +28,11 @@
 					active lifestyles</em>.
 			</p>
 			<%
-				if (session.getAttribute("noofproducts") != null) {
+				if (session.getAttribute("cart") != null) {
 			%>
 			<span id="size"
-				title="<%=(ArrayList) session.getAttribute("noofproducts")%>">Items
-				in Cart: <%=((ArrayList) session.getAttribute("noofproducts")).size()%></span>
+				title="<%=(ArrayList) session.getAttribute("cart")%>">Items
+				in Cart: <%=((ArrayList) session.getAttribute("cart")).size()%></span>
 			<%
 				} else {
 			%>
@@ -80,7 +56,7 @@
 				while (iterator.hasNext()) {
 					Product product = iterator.next();
 			%>
-			<form method="get" action="products">
+			<form method="get" action="addProducts">
 
 				<div class="productContainerItem">
 					<img id="pic3" src="<%=product.getProductImgPath()%>"> <input
