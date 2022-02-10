@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Connection;
 import java.text.MessageFormat;
 import java.util.List;
 
@@ -24,8 +25,9 @@ public class SearchServlet extends HttpServlet{
 
 		String searchString =req.getParameter("search");
 		req.getSession().setAttribute("search", searchString);
+		Connection connection = (Connection)getServletContext().getAttribute("dbconnection");
 		ApplicationDao dao= new ApplicationDao();
-		List<Product> products = dao.searchProducts(searchString);
+		List<Product> products = dao.searchProducts(searchString,connection);
 		//write the product back to the page 
 //		String page = getHTMLString(req.getServletContext().getRealPath("/html/search.html"), products);
 //		resp.getWriter().write(page);

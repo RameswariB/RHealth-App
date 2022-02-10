@@ -17,7 +17,8 @@
 </head>
 <body>
 
-	<%@include file="header.jsp" %>
+	<%@include file="header.jsp" %><!-- for static header value -->
+	<!--<jsp:include page="header.jsp"></jsp:include> // use for dynamic header value-->
 
 	<section id="products" class="section">
 		<div class="container">

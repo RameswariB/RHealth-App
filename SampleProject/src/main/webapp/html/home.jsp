@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!-- <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%> -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -22,7 +22,7 @@
 					<li><a href="home">home</a></li>
 					<li><a href="orderHistory">order history</a></li>
 					<!-- <li><a href="viewProfile">view my profile</a></li> -->
-					<li><a href='<%=response.encodeURL("viewProfile")%>'>view
+					<li><a href='<%=response.encodeURL("getProfileDetails")%>'>view
 							my profile</a></li>							
 					<li><a href='logout'>logout</a></li>
 					<li><a href="redirect">linkedIn</a></li>
@@ -37,7 +37,7 @@
     <p>We support and encourage <em>active and healthy</em> lifestyles, by offering <em>ethically sourced</em> and <em>eco-friendly</em> nutritional products for the <em>performance-driven</em> athlete.</p>
   </div>container tagline -->
 	</header>
-
+<!--  
 	<fmt:setBundle basename="com.test.resources.applicationResources"
 		var="message" scope="session" />
 
@@ -73,7 +73,7 @@
 		</div>
 	</section>
 
-
+-->
 	<footer class="footer">
 		<div class="container">
 			<nav class="nav" role="navigation">

@@ -11,12 +11,12 @@ import com.test.beans.Product;
 import com.test.beans.User;
 
 public class ApplicationDao {
-	public List<Product> searchProducts(String searchString) {
+	public List<Product> searchProducts(String searchString,Connection connection) {
 		Product product = null;
 		List<Product> products = new ArrayList<>();
 		
 		try {
-			Connection connection = DBConnection.getConnectionToDatabase();
+			
 			String sql= "Select * from products where product_name like '%"+searchString+"%'";
 			Statement statement = connection.createStatement();
 			ResultSet set = statement.executeQuery(sql);
@@ -63,6 +63,56 @@ public class ApplicationDao {
 		}
 		return rowsAffected;
 		
+	}
+	public boolean validateUser(String username,String password) {
+		boolean isValidUser=false;
+		try {
+			//get the connection from the database
+			Connection connection = DBConnection.getConnectionToDatabase();
+			// write the query
+			String query = "SELECT * FROM users WHERE username=? and password=?";
+			PreparedStatement stmt = connection.prepareStatement(query);
+			stmt.setString(1, username);
+			stmt.setString(2, password);
+			//execute the query and pass result set
+			ResultSet set = stmt.executeQuery();
+			while(set.next()) {
+				isValidUser= true;
+			}
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return isValidUser;
+	}
+	
+	/**
+	 * @param username
+	 * @return
+	 */
+	public User getProfileDetails(String username) {
+		User user = null;
+		try {
+			// get connection to database
+			Connection connection = DBConnection.getConnectionToDatabase();
+			String sql ="SELECT * FROM users where username =?";
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setString(1, username);
+			ResultSet set = stmt.executeQuery();
+			while(set.next()) {
+				user = new User();
+				user.setUsername(set.getString("username"));
+				user.setFirstName(set.getString("first_name"));
+				user.setLastName(set.getString("last_name"));
+				user.setActivity(set.getString("activity"));
+				user.setAge(set.getInt("age"));
+			}
+			
+		}
+		catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return user;
 	}
 
 }
